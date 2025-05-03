@@ -1,0 +1,33 @@
+name: Book Cult Class
+
+on:
+  schedule:
+    - cron: '30 16 * * *'  # 10PM IST = 4:30PM UTC
+  workflow_dispatch:       # allows manual trigger too
+
+jobs:
+  book-cult:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Booking Script
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+        ST: ${{ secrets.ST }}
+        AT: ${{ secrets.AT }}
+      run: |
+        echo "API_KEY=${API_KEY}" > .env
+        echo "ST=${ST}" >> .env
+        echo "AT=${AT}" >> .env
+        node bookCult.js
