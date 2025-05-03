@@ -3,7 +3,7 @@ name: Book Cult Class
 on:
   schedule:
     - cron: '30 16 * * *'  # 10PM IST = 4:30PM UTC
-  workflow_dispatch:       # allows manual trigger too
+  workflow_dispatch:
 
 jobs:
   book-cult:
@@ -26,8 +26,9 @@ jobs:
         API_KEY: ${{ secrets.API_KEY }}
         ST: ${{ secrets.ST }}
         AT: ${{ secrets.AT }}
-      run: node bookCult.js
+      run: |
         echo "API_KEY=${API_KEY}" > .env
         echo "ST=${ST}" >> .env
         echo "AT=${AT}" >> .env
         node bookCult.js
+        
