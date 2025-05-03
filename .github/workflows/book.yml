@@ -26,7 +26,7 @@ jobs:
         API_KEY: ${{ secrets.API_KEY }}
         ST: ${{ secrets.ST }}
         AT: ${{ secrets.AT }}
-      run: |
+      run: node bookCult.js
         echo "API_KEY=${API_KEY}" > .env
         echo "ST=${ST}" >> .env
         echo "AT=${AT}" >> .env
