@@ -2,7 +2,7 @@ name: Book Cult Class
 
 on:
   schedule:
-    - cron: '30 16 * * *'  # 10PM IST = 4:30PM UTC
+    - cron: '32 16 * * *'  # 10:02PM IST = 4:32PM UTC
   workflow_dispatch:
 
 jobs:
@@ -31,4 +31,3 @@ jobs:
         echo "ST=${ST}" >> .env
         echo "AT=${AT}" >> .env
         node bookCult.js
-        
